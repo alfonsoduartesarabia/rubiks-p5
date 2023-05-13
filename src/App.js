@@ -2,10 +2,11 @@ import './App.css';
 import Sketch from 'react-p5';
 
 let translateX, translateY, translateZ = 0;
+let height = 50; let width = 50; let depth = 50;
 
 function setup(p5, canvasParentRef) {
   // p5.createCanvas(window.innerWidth,window.innerHeight).parent(canvasParentRef);
-  p5.createCanvas(800,window.innerHeight,p5.WEBGL).parent(canvasParentRef);
+  p5.createCanvas(window.innerWidth,window.innerHeight,p5.WEBGL).parent(canvasParentRef);
   p5.frameRate(this);
   // p5.noLoop();
 };
@@ -15,7 +16,7 @@ function drawYellowSide(p5) {
   for(let i = 0; i < 4; i++){
     p5.push();
     p5.translate(translateX,translateY,translateZ);
-    p5.box(50,50,0);
+    p5.box(width,height,0);
     // translateX = 50;
     if(translateX === 0 && translateY === 0) translateX = 50;
     else if(translateX === 50 && translateY === 0) translateY = 50;
@@ -31,7 +32,7 @@ function drawRedSide(p5) {
   for(let i = 0; i < 4; i++){
     p5.push();
     p5.translate(translateX,translateY,translateZ);
-    p5.box(50,0,50);
+    p5.box(width,0,depth);
     // translateX = 50;
     if(translateY === -25 && translateZ === -25) translateZ = -75;
     else if(translateY === -25 && translateZ === -75 && translateX !== 50) translateX = 50;
@@ -63,10 +64,10 @@ function drawGreenSide(p5) {
   for(let i = 0; i < 4; i++){
     p5.push();
     p5.translate(translateX,translateY,translateZ);
-    p5.box(0,50,50);
+    p5.box(0,height,depth);
     // translateX = 50;
     if(translateX === -25 && translateY === 50 && translateZ === -25) translateY = 0;
-    else if(translateX === -25 && translateY === 0 && translateZ == -25) translateZ = -75;
+    else if(translateX === -25 && translateY === 0 && translateZ === -25) translateZ = -75;
     else if(translateX === -25 && translateY === 0 && translateZ === -75) translateY = 50;
     p5.pop();
   }
@@ -79,7 +80,7 @@ function drawOrangeSide(p5) {
   for(let i = 0; i < 4; i++){
     p5.push();
     p5.translate(translateX,translateY,translateZ);
-    p5.box(50,0,50);
+    p5.box(width,0,depth);
     // translateX = 50;
     if(translateX === 0 && translateY === 75 && translateZ === -25) translateZ = -75;
     else if(translateX === 0 && translateY === 75 && translateZ === -75) translateX = 50;
@@ -95,7 +96,7 @@ function drawWhiteSide(p5) {
   for(let i = 0; i < 4; i++){
     p5.push();
     p5.translate(translateX,translateY,translateZ);
-    p5.box(50,50,0);
+    p5.box(width,height,0);
     // translateX = 50;
     if(translateX === 50 && translateY === 0 && translateZ === -100) translateX = 0;
     else if(translateX === 0 && translateY === 0 && translateZ === -100) translateY = 50;
@@ -126,7 +127,7 @@ function draw(p5) {
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Sketch setup={setup} draw={draw} />
     </div>
   );
